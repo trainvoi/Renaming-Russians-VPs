@@ -1,6 +1,6 @@
 Tired of entering Russian cities as a unified Russian nation, only to found it named in G*rman names? Hear no more, because this is the mod for you:
 Current functions:
-Renaming all states and cities from German/Hungarian/Romanian/Japanese to Russian/Ukrainian names and vice-versa in these regions if you are a Russian or Kazakh nation (except you are Aryan Brotherhood Perm):
+-Renaming all states and cities from German/Hungarian/Romanian/Japanese to Russian/Ukrainian names and vice-versa in these regions if you are a Russian or Kazakh nation (except you are Aryan Brotherhood Perm):
 Moscowien
 Ostland
 Ukraine
