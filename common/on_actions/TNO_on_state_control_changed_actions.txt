@@ -1,0 +1,3956 @@
+on_actions = {
+	on_state_control_changed = {
+		effect = {
+			################################
+			###   Indonesian Civil War   ###
+			################################
+			if = {
+				limit = {
+					ROOT = { is_russian_nation = yes }
+					FROM = { is_kazakh_nation = yes }
+					SIB = {
+						NOT = { has_war_with = RWS }
+					}
+					RWS = {
+						NOT = { has_war_with = SIB }
+					}
+					FROM.FROM = {
+						OR = {
+							is_core_of = SIB
+							is_core_of = RWS
+						}
+					}
+				}
+				add_to_variable = { global.RUS_KAZ_progess = -1 }
+			}
+			if = {
+				limit = {
+					FROM = { is_russian_nation = yes }
+					ROOT = { is_kazakh_nation = yes }
+					SIB = {
+						NOT = { has_war_with = RWS }
+					}
+					RWS = {
+						NOT = { has_war_with = SIB }
+					}
+					FROM.FROM = {
+						OR = {
+							is_core_of = SIB
+							is_core_of = RWS
+						}
+					}
+				}
+				add_to_variable = { global.RUS_KAZ_progess = 1 }
+				if = {
+					limit = {
+						check_variable = { global.RUS_KAZ_progess > 12 }
+					}
+					FROM = {
+						add_stability = -0.20
+						if = {
+							limit = {
+								has_war_with = KZK
+							}
+							white_peace = KZK
+						}
+						if = {
+							limit = {
+								has_war_with = DON
+							}
+							white_peace = DON
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						check_variable = { global.RUS_KAZ_progess > 5 }
+					}
+					FROM = { country_event = { id = RUS_race_to_kazakhstan.35 days = 1 } }
+				}
+			}
+			if = {#Reinforce cells if a Cell region is fully captured
+				limit = {
+					FROM = {
+						original_tag = INS
+					}
+					ROOT = {
+						original_tag = FRI
+					}
+				}
+				if = {#North Sumatra
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 818
+								state = 817
+							}
+						}
+						FRI_has_majority_control_North_Sumatra = yes
+						ROOT = {
+							NOT = { has_country_flag = FRI_sec_cells_north_sumatra }
+						}
+					}
+					FRI = {
+						add_to_variable = {FRI_cs_north_sumatra = 2}
+						clamp_variable = {
+							var = FRI_cs_north_sumatra
+							min = 0
+							max = 10
+						}
+						set_country_flag = FRI_sec_north_sumatra
+					}
+				}
+
+				if = {#South Sumatra
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 819
+								state = 672
+							}
+						}
+						FRI_has_majority_control_South_Sumatra = yes
+						ROOT = {NOT = {has_country_flag = FRI_sec_south_sumatra}}
+					}
+					FRI = {
+						add_to_variable = {FRI_cs_south_sumatra = 2}
+						clamp_variable = {
+							var = FRI_cs_south_sumatra
+							min = 0
+							max = 10
+						}
+						set_country_flag = FRI_sec_cells_south_sumatra
+					}
+				}
+
+				if = {#West Java
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 799
+								state = 795
+							}
+						}
+						FRI_has_majority_control_West_Java = yes
+						ROOT = {NOT = {has_country_flag = FRI_sec_west_java}}
+					}
+					FRI = {
+						add_to_variable = {FRI_cs_west_java = 2}
+						clamp_variable = {
+							var = FRI_cs_west_java
+							min = 0
+							max = 10
+						}
+						set_country_flag = FRI_sec_cells_west_java
+					}
+				}
+
+				if = {#East Java
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 797
+								state = 796
+								state = 335
+							}
+						}
+						FRI_has_majority_control_East_Java = yes
+						ROOT = {NOT = {has_country_flag = FRI_sec_cells_east_java}}
+					}
+					FRI = {
+						add_to_variable = {FRI_cs_east_java = 2}
+						clamp_variable = {
+							var = FRI_cs_east_java
+							min = 0
+							max = 10
+						}
+						set_country_flag = FRI_sec_cells_east_java
+					}
+				}
+
+				if = {#Kalimantan
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 816
+								state = 794
+								state = 334
+							}
+						}
+						FRI_has_majority_control_Kalimantan = yes
+						ROOT = {NOT = {has_country_flag = FRI_sec_cells_kalimantan}}
+					}
+					FRI = {
+						add_to_variable = {FRI_cs_kalimantan = 2}
+						clamp_variable = {
+							var = FRI_cs_kalimantan
+							min = 0
+							max = 10
+						}
+						set_country_flag = FRI_sec_cells_kalimantan
+					}
+				}
+
+				if = {#Sulawesi
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 820
+								state = 821
+								state = 822
+								state = 823
+								state = 673
+							}
+						}
+						FRI_has_majority_control_Sulawesi = yes
+						ROOT = {NOT = {has_country_flag = FRI_sec_cells_sulawesi}}
+					}
+					FRI = {
+						add_to_variable = {FRI_cs_sulawesi = 2}
+						clamp_variable = {
+							var = FRI_cs_sulawesi
+							min = 0
+							max = 10
+						}
+						set_country_flag = FRI_sec_cells_sulawesi
+					}
+				}
+
+				if = {#Papua
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 523
+								state = 669
+							}
+						}
+						FRI_has_majority_control_Papua = yes
+						ROOT = {NOT = {has_country_flag = FRI_sec_cells_papua}}
+					}
+					FRI = {
+						add_to_variable = {FRI_cs_papua = 2}
+						clamp_variable = {
+							var = FRI_cs_papua
+							min = 0
+							max = 10
+						}
+						set_country_flag = FRI_sec_cells_papua
+					}
+				}
+
+				if = {#Moluccas
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 668
+								state = 824
+							}
+						}
+						FRI_has_majority_control_Moluccas = yes
+						ROOT = {NOT = {has_country_flag = FRI_sec_cells_moluccas}}
+					}
+					FRI = {
+						add_to_variable = {FRI_cs_moluccas = 2}
+						clamp_variable = {
+							var = FRI_cs_moluccas
+							min = 0
+							max = 10
+						}
+						set_country_flag = FRI_sec_cells_moluccas
+					}
+				}
+			}
+			if = {#Clear cell reinforcement blocker flags if region is fully recaptured by INS
+				limit = {
+					FROM = {
+						original_tag = FRI
+					}
+					ROOT = {
+						original_tag = INS
+					}
+				}
+				if = {#North Sumatra
+					limit = {	
+						FROM.FROM = {
+							OR = {
+								state = 817
+								state = 818
+							}
+						}
+						ROOT = {
+							has_full_control_of_state = 817
+							has_full_control_of_state = 818
+						}
+					}
+					FROM = {
+						clr_country_flag = FRI_sec_cells_north_sumatra
+					}
+				}
+
+				if = {#South Sumatra
+					limit = {	
+						FROM.FROM = {
+							OR = {
+								state = 672
+								state = 819
+							}
+						}
+						ROOT = {
+							has_full_control_of_state = 672
+							has_full_control_of_state = 819
+						}
+					}
+					FROM = {
+						clr_country_flag = FRI_sec_cells_south_sumatra
+					}
+				}
+
+				if = {#West Java
+					limit = {	
+						FROM.FROM = {
+							OR = {
+								state = 795
+								state = 799
+							}
+						}
+						ROOT = {
+							has_full_control_of_state = 795
+							has_full_control_of_state = 799
+						}
+					}
+					FROM = {
+						clr_country_flag = FRI_sec_cells_west_java
+					}
+				}
+
+				if = {#East Java
+					limit = {	
+						FROM.FROM = {
+							OR = {
+								state = 335
+								state = 796
+								state = 797
+							}
+						}
+						ROOT = {
+							has_full_control_of_state = 335
+							has_full_control_of_state = 796
+							has_full_control_of_state = 797
+						}
+					}
+					FROM = {
+						clr_country_flag = FRI_sec_cells_east_java
+					}
+				}
+
+				if = {#Kalimantan
+					limit = {	
+						FROM.FROM = {
+							OR = {
+								state = 334
+								state = 794
+								state = 816
+							}
+						}
+						ROOT = {
+							has_full_control_of_state = 334
+							has_full_control_of_state = 794
+							has_full_control_of_state = 816
+						}
+					}
+					FROM = {
+						clr_country_flag = FRI_sec_cells_kalimantan
+					}
+				}
+
+				if = {#Sulawesi
+					limit = {	
+						FROM.FROM = {
+							OR = {
+								state = 673
+								state = 820
+								state = 821
+								state = 822
+								state = 823
+							}
+						}
+						ROOT = {
+							has_full_control_of_state = 673
+							has_full_control_of_state = 820
+							has_full_control_of_state = 821
+							has_full_control_of_state = 822
+							has_full_control_of_state = 823
+						}
+					}
+					FROM = {
+						clr_country_flag = FRI_sec_cells_sulawesi
+					}
+				}
+
+				if = {#Papua
+					limit = {	
+						FROM.FROM = {
+							OR = {
+								state = 523
+								state = 669
+							}
+						}
+						ROOT = {
+							has_full_control_of_state = 523
+							has_full_control_of_state = 669
+						}
+					}
+					FROM = {
+						clr_country_flag = FRI_sec_cells_papua
+					}
+				}
+
+				if = {#Moluccas
+					limit = {	
+						FROM.FROM = {
+							OR = {
+								state = 668
+								state = 824
+							}
+						}
+						ROOT = {
+							has_full_control_of_state = 668
+							has_full_control_of_state = 824
+						}
+					}
+					FROM = {
+						clr_country_flag = FRI_sec_cells_moluccas
+					}
+				}
+			}
+
+			if = {#Name changers
+				limit = {
+					FROM = {
+						original_tag = INS
+					}
+					ROOT = {
+						original_tag = FRI
+					}
+					FROM.FROM = {
+						state = 669
+					}
+				}
+						
+				set_province_name = {
+					id = 12371
+					name = "Jayapura"
+				}
+			}
+
+			#############################
+			###   ANTI-HEYDRICH PACT  ###
+			#############################
+			
+			if = {
+				limit = {
+					has_global_flag = german_civil_war
+					NOT = { has_global_flag = anti_heydrich_pact_chain_begins }
+				}
+				if = {
+					limit = {
+						ROOT = { original_tag = HGR }
+						OR = {
+							AND = {
+								# num_of_controlled_states > 6
+								num_of_controlled_states > 11
+								NOT = { 5 = { is_controlled_by = HGR } }
+								NOT = { 85 = { is_controlled_by = HGR } }
+								NOT = { 97 = { is_controlled_by = HGR } }
+								NOT = { 98 = { is_controlled_by = HGR } }
+							}
+							AND = {
+								# num_of_controlled_states > 7
+								num_of_controlled_states > 12
+								count_triggers = {
+									amount = 4
+									NOT = { 5 = { is_controlled_by = HGR } }
+									NOT = { 85 = { is_controlled_by = HGR } }
+									NOT = { 97 = { is_controlled_by = HGR } }
+									NOT = { 98 = { is_controlled_by = HGR } }
+								}
+							}
+							AND = {
+								# num_of_controlled_states > 8
+								num_of_controlled_states > 13
+								count_triggers = {
+									amount = 3
+									NOT = { 5 = { is_controlled_by = HGR } }
+									NOT = { 85 = { is_controlled_by = HGR } }
+									NOT = { 97 = { is_controlled_by = HGR } }
+									NOT = { 98 = { is_controlled_by = HGR } }
+								}
+							}
+							AND = {
+								# num_of_controlled_states > 9
+								num_of_controlled_states > 14
+								count_triggers = {
+									amount = 2
+									NOT = { 5 = { is_controlled_by = HGR } }
+									NOT = { 85 = { is_controlled_by = HGR } }
+									NOT = { 97 = { is_controlled_by = HGR } }
+									NOT = { 98 = { is_controlled_by = HGR } }
+								}
+							}
+							AND = {
+								# num_of_controlled_states > 10
+								num_of_controlled_states > 15
+								count_triggers = {
+									amount = 1
+									NOT = { 5 = { is_controlled_by = HGR } }
+									NOT = { 85 = { is_controlled_by = HGR } }
+									NOT = { 97 = { is_controlled_by = HGR } }
+									NOT = { 98 = { is_controlled_by = HGR } }
+								}
+							}
+							AND = {
+								# num_of_controlled_states > 11
+								num_of_controlled_states > 16
+								5 = { is_controlled_by = HGR }
+								85 = { is_controlled_by = HGR }
+								97 = { is_controlled_by = HGR }
+								98 = { is_controlled_by = HGR }
+							}
+						}
+						count_triggers = {
+							amount > 1
+							country_exists = BGR
+							country_exists = GGR
+							country_exists = SGR
+						}
+					}
+					if = {
+						limit = { country_exists = SGR }
+						SGR = { country_event = speer.16 }
+					}
+					else_if = {
+						limit = { country_exists = BGR }
+						BGR = { country_event = bormann.9 }
+					}
+					set_global_flag = anti_heydrich_pact_chain_begins
+				}
+			}
+
+			###############################
+			###   Mongolian Civil War   ###
+			###############################
+
+			if = {
+				limit = {
+					FROM = {
+						original_tag = MON
+					}
+					ROOT = {
+						OR = {
+							original_tag = MEN
+							has_war_together_with = MEN
+							has_war_together_with = JAP
+						}
+					}
+					FROM.FROM = {
+						state = 330
+					}
+				}
+				set_province_name = {
+					id = 4801
+					name = "Khüree"
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							original_tag = MEN
+							has_war_together_with = MEN
+							has_war_together_with = JAP
+						}
+					}
+					ROOT = {
+						original_tag = MON
+					}
+					FROM.FROM = {
+						state = 330
+					}
+				}
+				set_province_name = {
+					id = 4801
+					name = "Ulaanbataar"
+				}
+			}
+
+			################################################
+			### Mengjiang Reconquest of Western Mongolia ###
+			################################################
+
+			#Mengjiang fcks up
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							original_tag = MEN
+							has_war_together_with = MEN
+						}
+					}
+					ROOT = {
+						original_tag = SVO
+					}
+					FROM.FROM = {
+						OR = {
+							is_core_of = MEN
+							is_core_of = MAN
+						}
+					}
+				}
+				MEN = {
+					country_event = men.24
+				}
+				JAP = {
+					country_event = men.25
+				}
+				SVO = {
+					country_event = SVO.2
+				}
+			}
+
+			###########################
+			###   Great Asian War   ###
+			###########################
+
+			if = {#GAW, to prevent China from running rampant in Korea
+				limit = {
+					NOT = {
+						has_global_flag = GAW_JAP_nuke_ultimatum
+					}
+					FROM.FROM = {
+						OR = {
+							state = 527
+							state = 525
+							state = 560
+							state = 655
+							state = 962
+							state = 963
+							state = 1090
+							state = 1096
+						}
+					}
+					FROM = {
+						original_tag = JAP
+					}
+					ROOT = {
+						OR = {
+							original_tag = CHI
+							has_war_together_with = CHI
+						}
+					}
+				}
+				JAP = {
+					country_event = {id = gaw.105 hours = 3}
+				}
+			}
+
+			if = {#YGAW, to prevent Long Yun from going insane
+				limit = {
+					NOT = {
+						has_global_flag = YGAW_JAP_nuke_ultimatum
+					}
+					FROM.FROM = {
+						OR = {
+							state = 527
+							state = 525
+							state = 560
+							state = 655
+							state = 962
+							state = 963
+							state = 1090
+							state = 1096
+						}
+					}
+					FROM = {
+						original_tag = JAP
+					}
+					ROOT = {
+						OR = {
+							original_tag = YUN
+							has_war_together_with = YUN
+						}
+					}
+				}
+				JAP = {
+					country_event = {id = gaw.305 hours = 3}
+				}
+			}
+
+			if = {#GAW - China captures Shanghai
+				limit = {
+					has_global_flag = GAW_in_progress
+					FROM.FROM = {
+						state = 813
+					}
+					FROM = {
+						original_tag = JAP
+					}
+					ROOT = {
+						OR = {
+							original_tag = CHI
+							has_war_together_with = CHI
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						OR = {
+							original_tag = CHI
+							original_tag = JAP
+							has_country_flag = GAW_neutral
+							has_country_flag = GAW_jap_ally
+							has_country_flag = GAW_chi_ally
+						}
+					}
+					country_event = {id = gaw.303 hours = 3}
+				}
+			}
+
+			if = {#Western Insurrection
+				limit = {
+					OR = {
+						has_global_flag = YUN_NPA_GAW_Crisis
+						has_global_flag = CHI_Western_Insurrection_Crisis
+					}
+					FROM = {
+						OR = {
+							original_tag = CHI
+							original_tag = JAP
+							is_in_faction_with = JAP
+						}
+					}
+
+					ROOT = {
+						original_tag = YUN
+					}
+
+				}
+				if = {
+					limit = {
+						FROM.FROM = {
+							state = 1016 #Wuhan
+						}
+					}
+					YUN = {
+						country_event = {id = yun.130}
+					}
+				}
+				
+				if = {
+					limit = {
+						FROM.FROM = {
+							state = 613 #Nanjing
+						}
+					}
+					YUN = {
+						country_event = {id = yun.131}
+					}
+				}
+
+				if = {
+					limit = {
+						FROM.FROM = {
+							state = 608 #Beijing
+						}
+					}
+					YUN = {
+						country_event = {id = yun.132}
+					}
+				}
+				if = {#Overrunning Manchuria, Long Yun dies
+					limit = {
+						FROM.FROM = {
+							is_core_of = MAN
+							NOT = {
+								OR = {
+									state = 610
+									state = 715
+									state = 716
+								}
+							}
+						}
+					}
+					YUN = {
+						country_event = {id = yun.153}
+						every_enemy_country = {
+							country_event = {
+								id = yun.154
+							}
+						}
+					}
+				}
+				if = {#Invading Korea (somehow)
+					limit = {
+						FROM.FROM = {
+							OR = {
+								state = 527
+								state = 525
+								state = 560
+								state = 655
+								state = 962
+								state = 963
+								state = 1090
+								state = 1096
+							}
+						}
+					}
+					JAP = {
+						country_event = yun.160
+					}
+				}
+			}
+
+			if = {#GAW - Japan recaptures Shanghai
+				limit = {
+					has_global_flag = GAW_in_progress
+					FROM.FROM = {
+						state = 813
+					}
+					FROM = {
+						OR = {
+							original_tag = CHI
+							has_war_together_with = CHI
+						}
+					}
+					ROOT = {
+						original_tag = JAP
+					}
+				}
+				every_country = {
+					limit = {
+						OR = {
+							original_tag = CHI
+							original_tag = JAP
+							has_country_flag = GAW_neutral
+							has_country_flag = GAW_jap_ally
+							has_country_flag = GAW_chi_ally
+						}
+					}
+					country_event = {id = gaw.304 hours = 3}
+				}
+			}
+
+			if = {#Chinese state captures Japanese states
+				limit = {
+					FROM = {
+						OR = {
+							original_tag = JAP
+							AND = {
+								has_war_together_with = JAP
+								has_global_flag = GAW_in_progress
+							}
+						}
+					}
+					ROOT = {
+						OR = {
+							original_tag = CHI
+							AND = {
+								has_war_together_with = CHI
+								has_global_flag = GAW_in_progress
+							}
+							AND = {
+								original_tag = YUN
+								has_country_leader = {
+									name = "Long Yun"
+									ruling_only = yes
+								}
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 813}
+					}
+					813 = {
+						set_state_name = "Shanghai"
+					}
+					set_province_name = {
+						id = 7014
+						name = "Shanghai"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 592}
+					}
+					592 = {
+						set_state_name = "Guangzhou"
+					}
+					set_province_name = {
+						id = 1047
+						name = "Guangzhou"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 729}
+					}
+					729 = {
+						set_state_name = "Aomen"
+					}
+					set_province_name = {
+						id = 4189
+						name = "Aomen"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 326}
+					}
+					326 = {
+						set_state_name = "Xianggang"
+					}
+					set_province_name = {
+						id = 10062
+						name = "Xianggang"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1089}
+					}
+					1089 = {
+						set_state_name = "Western Guangdong"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 593}
+					}
+					593 = {
+						set_state_name = "Guangdong"
+					}
+					set_province_name = {
+						id = 9938
+						name = "Shantou"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 591}
+					}
+					591 = {
+						set_state_name = "Hainan"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 810}
+					}
+					810 = {
+						set_state_name = "Dalian"
+					}				
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 812}
+					}
+					812 = {
+						set_state_name = "Qingdao"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 811}
+					}
+					811 = {
+						set_state_name = "Weihaiwei"
+					}
+					set_province_name = {
+						id = 4205
+						name = "Weihaiwei"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1094}
+					}
+					1094 = {
+						set_state_name = "Shandong"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 809}
+					}
+					809 = {
+						set_state_name = "Haishenwai"
+					}
+					set_province_name = {
+						id = 957
+						name = "Heishenwai"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 328}
+					}
+					set_province_name = {
+						id = 4572
+						name = "Changchun"
+					}   
+				}
+			}
+
+			if = {#Japan captures pre-GAW Japanese states in China
+				limit = {
+					FROM = {
+						OR = {
+							original_tag = CHI
+							AND = {
+								has_war_together_with = CHI
+								has_global_flag = GAW_in_progress
+							}
+							AND = {
+								original_tag = YUN
+								has_country_leader = {
+									name = "Long Yun"
+									ruling_only = yes
+								}
+							}
+						}
+					}
+					ROOT = {
+						OR = {
+							original_tag = JAP
+							AND = {
+								has_war_together_with = JAP
+								has_global_flag = GAW_in_progress
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 813}
+					}	
+					813 = {
+						set_state_name = "Jōkai"
+					}
+					set_province_name = {
+						id = 7014
+						name = "Jōkai"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 592}
+					}
+					592 = {
+						set_state_name = "Kyōju"
+					}
+					set_province_name = {
+						id = 1047
+						name = "Kyōju"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 729}
+					}
+					729 = {
+						set_state_name = "Ōmon"
+					}
+					set_province_name = {
+						id = 4189
+						name = "Ōmon"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 326}
+					}
+					326 = {
+						set_state_name = "Kōkō"
+					}
+					set_province_name = {
+						id = 10062
+						name = "Kōkō"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1089}
+					}
+					1089 = {
+						set_state_name = "Nishikanton"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 593}
+					}
+					593 = {
+						set_state_name = "Kanton"
+					}
+					set_province_name = {
+						id = 9938
+						name = "Santō"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 591}
+					}
+					591 = {
+						set_state_name = "Kainantō"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 810}
+					}
+					810 = {
+						set_state_name = "Ryojun"
+					}				
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 812}
+					}
+					812 = {
+						set_state_name = "Chintao"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 811}
+					}
+					811 = {
+						set_state_name = "Ikaiei"
+					}
+					set_province_name = {
+						id = 4205
+						name = "Ikaiei"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1094}
+					}
+					1094 = {
+						set_state_name = "Yantai"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 809}
+					}
+					809 = {
+						set_state_name = "Urajio"
+					}
+					set_province_name = {
+						id = 957
+						name = "Urajio"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 328}
+					}
+					set_province_name = {
+						id = 4572
+						name = "Xinjing"
+					}   
+				}
+			}
+
+	
+
+			###########################
+			###   Warsaw Uprising   ###
+			###########################
+
+			#Germany/GGN takes Polish states (in Poland)
+			if = {
+				limit = {
+					FROM = {
+						original_tag = POL
+					}
+					ROOT = {
+						OR = {
+							original_tag = GGN
+							original_tag = GER
+							has_war_together_with = GER
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 10}
+					}
+					10 = {
+						set_state_name = "Warschau"
+					}
+					set_province_name = {
+						id = 3544
+						name = "Warschau"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 90}
+					}
+					90 = {
+						set_state_name = "Wartheland"
+					}
+					set_province_name = {
+						id = 3586
+						name = "Tschenstochau"
+					} 	
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 92}
+					}
+					92 = {
+						set_state_name = "Lublin"
+					}
+					#set_province_name = {
+					#	id = 3521
+					#	name = "Siedlitz"
+					#} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1380}
+					}
+					1380 = {
+						set_state_name = "Radzyn"
+					}
+					set_province_name = {
+						id = 3521
+						name = "Siedlitz"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 88}
+					}
+					88 = {
+						set_state_name = "Krakau"
+					}
+					set_province_name = {
+						id = 9427
+						name = "Krakau"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1385}
+					}
+					1385 = {
+						set_state_name = "Tarnau"
+					}
+					set_province_name = {
+						id = 442
+						name = "Tarnau"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1386}
+					}
+					1386 = {
+						set_state_name = "Jaroslau"
+					}
+					set_province_name = {
+						id = 6522
+						name = "Reichshof"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1391}
+					}
+					1391 = {
+						set_state_name = "Lemberg Province"
+					}
+					set_province_name = {
+	   					id = 11479
+	   					name = "Lemberg"
+	   				}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 89}
+					}
+					89 = {
+						set_state_name = "Stanislau"
+					}
+					set_province_name = {
+						id = 11411
+						name = "Stanislau"
+					}
+					set_province_name = {
+						id = 3743
+						name = "Kolomea"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 91}
+					}
+					91 = { set_state_name = "Tarnopol" }
+					set_province_name = { id = 11479 name = "Tarnopol" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1388}
+					}
+					1388 = { set_state_name = "Kalusch" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1394}
+					}
+					1394 = { set_state_name = "Bereschany" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1393}
+					}
+					1393 = { set_state_name = "Solotschiw" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1392}
+					}
+					1392 = { set_state_name = "Kamjanka Buska" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1387}
+					}
+					1387 = { set_state_name = "Sombor" }
+				}
+			}
+			#Poland takes Germany/GGN states (in Poland)
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							original_tag = GGN
+							original_tag = GER
+							has_war_together_with = GER
+						}
+					}
+					ROOT = {
+						original_tag = POL
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 10}
+					}
+					10 = {
+						set_state_name = "Warszawa"
+					}
+					set_province_name = {
+						id = 3544
+						name = "Warszawa"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1382}
+					}
+					1382 = {
+						set_state_name = "Radomsko"
+					}
+					set_province_name = {
+						id = 3586
+						name = "Częstochowa"
+					} 	
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 92}
+					}
+					92 = {
+						set_state_name = "Lublin"
+					}
+					#set_province_name = {
+					#	id = 3521
+					#	name = "Lublin"
+					#} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1380}
+					}
+					1380 = {
+						set_state_name = "Radzyn"
+					}
+					set_province_name = {
+						id = 3521
+						name = "Siedlce"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 88}
+					}
+					88 = {
+						set_state_name = "Małopolska"
+					}
+					set_province_name = {
+						id = 9427
+						name = "Kraków"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1385}
+					}
+					1385 = {
+						set_state_name = "Tarnów"
+					}
+					set_province_name = {
+						id = 442
+						name = "Tarnów"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1386}
+					}
+					1386 = {
+						set_state_name = "Jarosław"
+					}
+					set_province_name = {
+						id = 6522
+						name = "Rzeszów"
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1391}
+					}
+					1391 = {
+						set_state_name = "Lwów Province"
+					}
+					set_province_name = {
+	   					id = 11479
+	   					name = "Lwów"
+	   				}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 89}
+					}
+					89 = {
+						set_state_name = "Stanisławów"
+					}
+					set_province_name = {
+						id = 11411
+						name = "Stanisławów"
+					}
+					set_province_name = {
+						id = 3743
+						name = "Kołomyja"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 91}
+					}
+					91 = { set_state_name = "Tarnopol" }
+					set_province_name = { id = 11479 name = "Tarnopol" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1388}
+					}
+					1388 = { set_state_name = "Kalusz" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1394}
+					}
+					1394 = { set_state_name = "Brzezany" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1393}
+					}
+					1393 = { set_state_name = "Zloczow" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1392}
+					}
+					1392 = { set_state_name = "Kamionka Strumilow" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1387}
+					}
+					1387 = { set_state_name = "Sambor" }
+				}
+			}
+			#######################################################
+			### RUSSIAN WARLORD VP NAME CHANGES GOD HELP US ALL ###
+			#######################################################
+
+
+			if = {
+				limit = {
+					FROM = {
+						tag = VTY
+					}
+					ROOT = {
+						tag = WSR
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 859}
+					}
+					TNO_Russia_load_regional_tree = yes
+				}
+			}
+
+			### Far East ###
+			#To Russian
+			if = {
+				limit = {
+					ROOT = {
+						is_russian_nation = yes
+					}
+					FROM = {
+						OR = {
+							tag = MAN
+							tag = CHI
+							is_in_faction_with = CHI
+							is_in_faction_with = JAP
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1364}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								tag = AMR
+								has_country_flag = renamed_blagoveshchensk
+							}
+						}
+						1364 = {
+							set_state_name = "Rodzaevsk"
+						}
+						set_province_name = {
+							id = 7763
+							name = "Rodzaevsk"
+						} 
+					}
+					else = {
+						1364 = {
+							set_state_name = "Blagoveshchensk"
+						}
+						set_province_name = {
+							id = 7763
+							name = "Blagoveshchensk"
+						} 
+					}
+					set_province_name = {
+						id = 12657
+						name = "Svobodny"
+					} 
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						is_russian_nation = yes
+					}
+					FROM = {
+						OR = {
+							tag = MAN
+							tag = CHI
+							is_in_faction_with = CHI
+							is_in_faction_with = JAP
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 657}
+					}
+					657 = {
+						set_state_name = "Birobidzhan"
+					}
+					set_province_name = {
+						id = 12263
+						name = "Komsomolsk-na-Amure"
+					} 
+					set_province_name = {
+						id = 7672
+						name = "Birobidzhan"
+					} 
+					set_province_name = {
+						id = 12559
+						name = "Nikolayevsk-na-Amure"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 409}
+					}
+					409 = {
+						set_state_name = "Khabarovsk"
+					}
+					set_province_name = {
+						id = 12189
+						name = "Khabarovsk"
+					} 
+					if = {
+						limit = {
+							ROOT = {
+								OR = {
+									has_government = communist
+									has_government = socialist
+								}
+							}
+						}
+						set_province_name = {
+							id = 9604
+							name = "Sovetskaya Gavan"
+						} 
+					}
+					else = {
+						set_province_name = {
+							id = 9604
+							name = "Imperatorskaya Gavan"
+						} 
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 408}
+					}
+				408 = {
+						set_state_name = "Primorsky Krai"
+					}
+					set_province_name = {
+						id = 11750
+						name = "Arsenyev"
+					} 
+					set_province_name = {
+						id = 3977
+						name = "Ussuriysk"
+					} 
+					set_province_name = {
+						id = 6961
+						name = "Nakhodka"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 809}
+					}
+					809 = {
+						set_state_name = "Vladivostok"
+					}
+					set_province_name = {
+						id = 957
+						name = "Vladivostok"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 537}
+					}
+					537 = {
+						set_state_name = "Sakhalin"
+					}
+					set_province_name = {
+						id = 12446
+						name = "Yuzhno-Sakhalinsk"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 555}
+					}
+					555 = {
+						set_state_name = "Kurilskiye Ostrova"
+					}
+				}
+			}
+
+			# From Russian
+			if = {
+				limit = {
+					ROOT = {
+						OR = {
+							tag = MAN
+							tag = CHI
+							is_in_faction_with = CHI
+							is_in_faction_with = JAP
+						}
+					}
+					FROM = {
+						is_russian_nation = yes
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1364}
+					}
+					1364 = {
+						set_state_name = "Jieya"
+					}
+					set_province_name = {
+						id = 7763
+						name = "Hailanpao"
+					} 
+					set_province_name = {
+						id = 12657
+						name = "Jieyawan"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 657}
+					}
+					657 = {
+						set_state_name = "Biluobizhan"
+					}
+					set_province_name = {
+						id = 12263
+						name = "Yajiang"
+					} 
+					set_province_name = {
+						id = 7672
+						name = "Biluobizhan"
+					} 
+					set_province_name = {
+						id = 12559
+						name = "Heilongkou"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 409}
+					}
+					409 = {
+						set_state_name = "Boli"
+					}
+					set_province_name = {
+						id = 12189
+						name = "Boli"
+					} 
+					set_province_name = {
+						id = 9604
+						name = "Kangde"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 408}
+					}
+					408 = {
+						set_state_name = "Haishenwai"
+					}
+					set_province_name = {
+						id = 11750
+						name = "Ershenye"
+					} 
+					set_province_name = {
+						id = 3977
+						name = "Supin"
+					} 
+					set_province_name = {
+						id = 6961
+						name = "Fuxian"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 809}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								OR = {
+									tag = JAP
+									is_in_faction_with = JAP
+								}
+							}
+						}
+						809 = {
+							set_state_name = "Urajio"
+						}
+						set_province_name = {
+							id = 957
+							name = "Urajio"
+						} 
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								OR = {
+									tag = CHI
+									is_in_faction_with = CHI
+								}
+							}
+						}
+						809 = {
+							set_state_name = "Yongming"
+						}
+						set_province_name = {
+							id = 957
+							name = "Yongming"
+						} 
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 537}
+					}
+					537 = {
+						set_state_name = "Karafuto"
+					}
+					set_province_name = {
+						id = 12446
+						name = "Toyohara"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 555}
+					}
+					555 = {
+						set_state_name = "Chishima Rettō"
+					}
+				}
+			}
+
+			### RETURN TO SANITY ###
+			
+			############
+			#Madagascar#
+			############
+			if = { #Hitnagdut takes states- Hebrewizations credit to mupper
+				limit = {
+					FROM = {
+						OR = {
+							original_tag = MAD
+							original_tag = MDG
+							original_tag = MDM
+						}
+					}
+					ROOT = {
+						original_tag = MDJ
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 543 }
+					}
+					543 = { set_state_name = "Dyego Suerz" }
+					set_province_name = { id = 13764 name = "Enchaihai" }
+					set_province_name = { id = 13793 name = "Dyego Suerz" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 706 }
+					}
+					set_province_name = { id = 13017 name = "Seynt Dinis" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 707 }
+					}
+					set_province_name = { id = 13018 name = "Parj Lawaiz" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 944 }
+					}
+					944 = { set_state_name = "Thamesina" }
+					set_province_name = { id = 13706 name = "Thamesina" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 945 }
+					}
+					945 = { set_state_name = "Antananaribe" }
+					set_province_name = { id = 13705 name = "Antananaribe" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 946 }
+					}
+					946 = { set_state_name = "Telyara" }
+					set_province_name = { id = 12956 name = "Telyara" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 947 }
+					}
+					set_province_name = { id = 13727 name = "Mabadanana" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1041 }
+					}
+					set_province_name = { id = 13657 name = "Iheshi" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1042 }
+					}
+					1043 = { set_state_name = "Telenara" }
+					set_province_name = { id = 13633 name = "Telenara" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1043 }
+					}
+					1043 = { set_state_name = "Merendaba" }
+					set_province_name = { id = 8180 name = "Merendaba" }
+					set_province_name = { id = 11015 name = "Mintirane" }
+				}
+			}
+			
+			if = { #Natives take states
+				limit = {
+					FROM = {
+						OR = {
+							original_tag = MAD
+							original_tag = MDG
+							original_tag = MDJ
+						}
+					}
+					ROOT = {
+						original_tag = MDM
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 543 }
+					}
+					543 = { set_state_name = "Antsiranana" }
+					set_province_name = { id = 13764 name = "Antsohihy" }
+					set_province_name = { id = 13793 name = "Antsiranana" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 706 }
+					}
+					set_province_name = { id = 13017 name = "Saint-Denis" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 707 }
+					}
+					set_province_name = { id = 13018 name = "Port Louis" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 944 }
+					}
+					944 = { set_state_name = "Toamasina" }
+					set_province_name = { id = 13706 name = "Toamasina" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 945 }
+					}
+					945 = { set_state_name = "Antananarivo" }
+					set_province_name = { id = 13705 name = "Antananarivo" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 946 }
+					}
+					946 = { set_state_name = "Toliara" }
+					set_province_name = { id = 12956 name = "Toliara" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 947 }
+					}
+					set_province_name = { id = 13727 name = "Maevatanana" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1041 }
+					}
+					set_province_name = { id = 13657 name = "Ihosy" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1042 }
+					}
+					1043 = { set_state_name = "Tolanaro" }
+					set_province_name = { id = 13633 name = "Tolanaro" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1043 }
+					}
+					1043 = { set_state_name = "Morondava" }
+					set_province_name = { id = 8180 name = "Morondava" }
+					set_province_name = { id = 11015 name = "Maintirano" }
+				}
+			}
+			
+			if = { #For German factions if Malagasy VPs are ever Germanized to be more easily integrated into this system
+				limit = {
+					FROM = {
+						OR = {
+							original_tag = MDM
+							original_tag = MDJ
+						}
+					}
+					ROOT = {
+						OR = {
+							original_tag = MAD
+							original_tag = MDG
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 543 }
+					}
+					543 = { set_state_name = "Antsiranana" }
+					set_province_name = { id = 13764 name = "Antsohihy" }
+					set_province_name = { id = 13793 name = "Antsiranana" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 706 }
+					}
+					set_province_name = { id = 13017 name = "Saint-Denis" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 707 }
+					}
+					set_province_name = { id = 13018 name = "Port Louis" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 944 }
+					}
+					944 = { set_state_name = "Toamasina" }
+					set_province_name = { id = 13706 name = "Toamasina" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 945 }
+					}
+					945 = { set_state_name = "Antananarivo" }
+					set_province_name = { id = 13705 name = "Antananarivo" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 946 }
+					}
+					946 = { set_state_name = "Toliara" }
+					set_province_name = { id = 12956 name = "Toliara" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 947 }
+					}
+					set_province_name = { id = 13727 name = "Maevatanana" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1041 }
+					}
+					set_province_name = { id = 13657 name = "Ihosy" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1042 }
+					}
+					1043 = { set_state_name = "Tolanaro" }
+					set_province_name = { id = 13633 name = "Tolanaro" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 1043 }
+					}
+					1043 = { set_state_name = "Morondava" }
+					set_province_name = { id = 8180 name = "Morondava" }
+					set_province_name = { id = 11015 name = "Maintirano" }
+				}
+			}
+			
+			
+
+			### COMMUNIZATION ###
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+						NOT = {
+							OR = {
+								has_government = communist
+								has_government = socialist
+							}
+						}
+					}
+					ROOT = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+						OR = {
+							has_government = communist
+							has_government = socialist
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 400}
+					}
+					400 = {
+						set_state_name = "Rykov"
+					}
+					set_province_name = {
+						id = 6124
+						name = "Rykov"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 753}
+					}
+					753 = {
+						set_state_name = "Perm"
+					}
+					set_province_name = {
+						id = 7375
+						name = "Perm"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 850}
+					}
+					850 = {
+						set_state_name = "Kuybyshev"
+					}
+					set_province_name = {
+						id = 11225
+						name = "Kuybyshev"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 851}
+					}
+					851 = {
+						set_state_name = "Ulyanovsk"
+					}
+					set_province_name = {
+						id = 3382
+						name = "Ulyanovsk"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 252}
+					}
+					252 = {
+						set_state_name = "Gorky"
+					}
+					set_province_name = {
+						id = 11375
+						name = "Gorky"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 653}
+					}
+					653 = {
+						set_state_name = "Sverdlovsk"
+					}
+					set_province_name = {
+						id = 1821
+						name = "Sverdlovsk"
+					} 
+				}
+			}
+
+			### DECOMMUNIZATION ###
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+						OR = {
+							has_government = communist
+							has_government = socialist
+						}
+					}
+					ROOT = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+						NOT = {
+							OR = {
+								has_government = communist
+								has_government = socialist
+							}
+							tag = PRM
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 400}
+					}
+					400 = {
+						set_state_name = "Vyatka"
+					}
+					set_province_name = {
+						id = 6124
+						name = "Vyatka"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 753}
+					}
+					753 = {
+						set_state_name = "Perm"
+					}
+					set_province_name = {
+						id = 7375
+						name = "Perm"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 850}
+					}
+					850 = {
+						set_state_name = "Samara"
+					}
+					set_province_name = {
+						id = 11225
+						name = "Samara"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 851}
+					}
+					851 = {
+						set_state_name = "Simbirsk"
+					}
+					set_province_name = {
+						id = 3382
+						name = "Simbirsk"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 252}
+					}
+					252 = {
+						set_state_name = "Nizhny Novgorod"
+					}
+					set_province_name = {
+						id = 11375
+						name = "Nizhny Novgorod"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 653}
+					}
+					653 = {
+						set_state_name = "Yekaterinburg"
+					}
+					set_province_name = {
+						id = 1821
+						name = "Yekaterinburg"
+					} 
+				}
+			}
+
+			### RODZAEVSK ###
+			#From Rodzaevsk
+			if = {
+				limit = {
+					FROM = {
+						tag = AMR
+					}
+					ROOT = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+						NOT = {
+							tag = AMR
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1364}
+					}
+					1364 = {
+						set_state_name = "Blagoveshchensk"
+					}
+					set_province_name = {
+						id = 7763
+						name = "Blagoveshchensk"
+					} 
+				}
+			}
+
+			#To Rodzaevsk
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+						NOT = {
+							tag = AMR
+						}
+					}
+					ROOT = {
+						tag = AMR
+						has_country_flag = renamed_blagoveshchensk
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1364}
+					}
+					1364 = {
+						set_state_name = "Rodzaevsk"
+					}
+					set_province_name = {
+						id = 7763
+						name = "Rodzaevsk"
+					} 
+				}
+			}
+
+			### ARYANIZATION ###
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+						NOT = {
+							tag = PRM
+						}
+					}
+					ROOT = {
+						AND = { 
+							tag = PRM
+							has_government = national_socialism
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 252 }
+					}
+					252 = {
+						set_state_name = "Nidernoyshtat"
+					}
+					set_province_name = {
+						id = 11375
+						name = "Nidernoyshtat"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = { state = 214 }
+					}
+					214 = {
+						set_state_name = "Ertsengel"
+					}
+					set_province_name = {
+						id = 3338
+						name = "Ertsengel"
+					} 
+				}
+			}
+
+			### DEARYANIZATION - NON COMMIES ###
+			if = {
+				limit = {
+					FROM = {
+						tag = PRM
+					}
+					ROOT = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+						NOT = {
+							tag = PRM
+						}
+						NOT = {
+							OR = {
+								has_government = communist
+								has_government = socialist
+							}
+						}
+					}
+				}
+			}
+
+
+			### Fuck Finland ###
+
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							tag = KRL
+							tag = FIN
+						}
+					}
+					ROOT = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 213}
+					}
+					213 = {
+						set_state_name = "Kola"
+					}
+					set_province_name = {
+						id = 11117
+						name = "Murmashi"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1359}
+					}
+					1359 = {
+						set_state_name = "Murmansk"
+					}
+					set_province_name = {
+						id = 3134
+						name = "Murmansk"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 216}
+					}
+					216 = {
+						set_state_name = "Olonets"
+					}
+					set_province_name = {
+						id = 11159
+						name = "Petrozavodsk"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 146}
+					}
+					146 = {
+						set_state_name = "Karelia"
+					}
+					set_province_name = {
+						id = 9206
+						name = "Vyborg"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 215}
+					}
+					215 = {
+						set_state_name = "White Karelia"
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+						}
+					}
+					ROOT = {
+						OR = {
+							tag = KRL
+							tag = FIN
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 213}
+					}
+					213 = {
+						set_state_name = "Kuola"
+					}
+					#set_province_name = {
+					#	id = 11117
+					#	name = "Murmashi"
+					#} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1359}
+					}
+					1359 = {
+						set_state_name = "Muurmani"
+					}
+					set_province_name = {
+						id = 3134
+						name = "Muurmani"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 216}
+					}
+					216 = {
+						set_state_name = "Aunuksen Karjala"
+					}
+					set_province_name = {
+						id = 11159
+						name = "Äänislinna"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 146}
+					}
+					146 = {
+						set_state_name = "Karjala"
+					}
+					set_province_name = {
+						id = 9206
+						name = "Viipuri"
+					} 
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 215}
+					}
+					215 = {
+						set_state_name = "Vienan Karjala"
+					}
+				}
+			}
+			
+			#Russification
+			if = {
+				limit = {
+					#FROM = {
+					#	OR = {
+					#		original_tag = GER
+					# 		original_tag = GGN
+					#		original_tag = HUN
+					#		original_tag = ROM
+					#		original_tag = MCW
+					#		original_tag = UKR
+					#		original_tag = CAU
+					#		original_tag = JST
+					#		original_tag = RKO
+					#		original_tag = MST
+					#		original_tag = OST
+					#		original_tag = DST
+					#		original_tag = GOT
+					#		original_tag = PET
+					#		original_tag = PSK
+					#		original_tag = VLG
+					#		is_in_faction_with = GER
+					#	}
+					#}
+					ROOT = {
+						OR = {
+							is_russian_nation = yes
+							is_kazakh_nation = yes
+							original_tag = ADY
+							original_tag = DAG
+							original_tag = GEI
+							original_tag = AZR
+							original_tag = ARM
+							original_tag = UPO
+							original_tag = BLR
+							original_tag = MOS
+							AND = {
+								original_tag = UKR
+								is_puppet = no
+							}
+						}
+						NOT = {
+							original_tag = PET
+							original_tag = PSK
+							original_tag = VLG
+							AND = { 
+								tag = PRM
+								has_government = national_socialism
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 195}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								OR = {
+									has_government = communist
+									has_government = socialist
+								}
+							}
+						}
+						195 = {
+							set_state_name = "Leningrad"
+							#set_variable = { nationality = 151 }
+						}
+						set_province_name = { id = 3151 name = "Leningrad" }
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								NOT = {
+									OR = {
+										has_government = communist
+										has_government = socialist
+									}
+								}
+							}
+						}
+						195 = {
+							set_state_name = "Petrograd"
+							#set_variable = { nationality = 151 }
+						}
+						set_province_name = { id = 3151 name = "Petrograd" }
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 217}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								OR = {
+									has_government = communist
+									has_government = socialist
+								}
+							}
+						}
+						217 = { set_state_name = "Voroshilovgrad" }
+						set_province_name = { id = 3529 name = "Voroshilovgrad" }
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								NOT = {
+									OR = {
+										has_government = communist
+										has_government = socialist
+									}
+								}
+							}
+						}
+						217 = { set_state_name = "Volgograd" }
+						set_province_name = { id = 3529 name = "Volgograd" }
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 401}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								OR = {
+									has_government = communist
+									has_government = socialist
+								}
+							}
+						}
+						401 = { set_state_name = "Engels" }
+						set_province_name = { id = 3551 name = "Yershov" }
+						set_province_name = { id = 11523 name = "Engels" }
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								NOT = {
+									OR = {
+										has_government = communist
+										has_government = socialist
+									}
+								}
+							}
+						}
+						401 = { set_state_name = "Pokrovsk" }
+						set_province_name = { id = 3551 name = "Yershov" }
+						set_province_name = { id = 11523 name = "Pokrovsk" }
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 196}
+					}
+					196 = {
+						set_state_name = "Kherson"
+					}
+					set_province_name = { id = 767 name = "Nova Kakhovka" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 200}
+					}
+					200 = {
+						set_state_name = "Zaporizhzhia"
+					}
+					set_province_name = { id = 11405 name = "Zaporizhzhia"}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 208}
+					}
+					208 = { set_state_name = "Luga" }
+					set_province_name = { id = 9098 name = "Luga" }
+					set_province_name = { id = 11186 name = "Koporye" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 209}
+					}
+					209 = { set_state_name = "Pskov" }
+					set_province_name = { id = 9319 name = "Lamovo" }
+					set_province_name = { id = 11202 name = "Pskov" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 210}
+					}
+					210 = { set_state_name = "Ostrov" }
+					set_province_name = { id = 9254 name = "Ostrov" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 218}
+					}
+					218 = { set_state_name = "Rostov" }
+					set_province_name = { id = 9417 name = "Rostov-on-Don" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 219}
+					}
+					219 = { set_state_name = "Moskva" }
+					set_province_name = { id = 6380 name = "Moskva" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 220}
+					}
+					220 = { set_state_name = "Kursk" }
+					set_province_name = { id = 3580 name = "Kursk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 221}
+					}
+					221 = { set_state_name = "Kharkiv" }
+					set_province_name = { id = 418 name = "Kharkiv" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 222}
+					}
+					222 = { set_state_name = "Oryol" }
+					set_province_name = { id = 9355 name = "Oryol" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 223}
+					}
+					223 = { set_state_name = "Tula" }
+					set_province_name = { id = 6262 name = "Tula" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 224}
+					}
+					224 = { set_state_name = "Bryansk" }
+					set_province_name = { id = 3335 name = "Bryansk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 226}
+					}
+					226 = {
+						set_state_name = "Dnipropetrovsk" 
+						#set_variable = { nationality = 164 }
+					}
+					set_province_name = { id = 11437 name = "Dnipropetrovsk" }
+					set_province_name = { id = 11561 name = "Kryvyi Rih" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 227}
+					}
+					227 = { set_state_name = "Donetsk" }
+					set_province_name = { id = 6420 name = "Mariupol" }
+					set_province_name = { id = 6474 name = "Donetsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 228}
+					}
+					228 = { set_state_name = "Luhansk" }
+					set_province_name = { id = 6519 name = "Severodonetsk" }
+					set_province_name = { id = 9461 name = "Luhansk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 229}
+					}
+					229 = { set_state_name = "Azerbaijan" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 231}
+					}
+					231 = { set_state_name = "Georgia" }
+					set_province_name = { id = 1599 name = "Tbilisi" }
+					set_province_name = { id = 9626 name = "Kutaisi" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 232}
+					}
+					232 = { set_state_name = "Chechnya-Dagestan" }
+					set_province_name = { id = 712 name = "Kizlyar" }
+					set_province_name = { id = 3672 name = "Grozny" }
+					set_province_name = { id = 6701 name = "Makhachkala" }
+					set_province_name = { id = 7624 name = "Derbent" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 233}
+					}
+					233 = { set_state_name = "Caucasus Mountains" }
+					set_province_name = { id = 9628 name = "Vladikavkaz" }
+					set_province_name = { id = 9649 name = "Nalchik" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 234}
+					}
+					234 = { set_state_name = "Krasnodar" }
+					set_province_name = { id = 3720 name = "Maykop" }
+					set_province_name = { id = 3734 name = "Krasnodar" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 235}
+					}
+					235 = { set_state_name = "Stavropol" }
+					set_province_name = { id = 748 name = "Stavropol" }
+					set_province_name = { id = 11678 name = "Pyatigorsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 236}
+					}
+					236 = { set_state_name = "Astrakhan" }
+					set_province_name = { id = 9753 name = "Astrakhan" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 237}
+					}
+					237 = { set_state_name = "Elista" }
+					set_province_name = { id = 11566 name = "Elista" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 238}
+					}
+					238 = { set_state_name = "Volgodonsk" }
+					set_province_name = { id = 6490 name = "Volgodonsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 239}
+					}
+					239 = { set_state_name = "Saratov" }
+					set_province_name = { id = 433 name = "Balashov" }
+					set_province_name = { id = 3578 name = "Saratov" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 242}
+					}
+					242 = { set_state_name = "Smolensk" }
+					set_province_name = { id = 306 name = "Smolensk" }
+					set_province_name = { id = 11254 name = "Vyazma" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 243}
+					}
+					243 = { set_state_name = "Roslavl" }
+					set_province_name = { id = 3210 name = "Prigorskoye" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 245}
+					}
+					245 = { set_state_name = "Millerovo" }
+					set_province_name = { id = 3519 name = "Millerovo" }
+					set_province_name = { id = 6544 name = "Morozovsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 246}
+					}
+					246 = { set_state_name = "Rzhev" }
+					set_province_name = { id = 11224 name = "Ostashkov" }
+					set_province_name = { id = 11349 name = "Rzhev" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 247}
+					}
+					247 = { set_state_name = "Tver" }
+					set_province_name = { id = 6245 name = "Tver" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 248}
+					}
+					248 = { set_state_name = "Yaroslavl" }
+					set_province_name = { id = 121 name = "Yaroslavl" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 253}
+					}
+					#253 = { set_state_name = "Vladimir" }
+					253 = { set_state_name = "Ivanovo" }
+					#set_province_name = { id = 378 name = "Vladimir" }
+					set_province_name = { id = 378 name = "Ivanovo" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 254}
+					}
+					254 = { set_state_name = "Ryazan" }
+					set_province_name = { id = 11248 name = "Ryazan" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 255}
+					}
+					255 = { set_state_name = "Penza" }
+					set_province_name = { id = 9409 name = "Penza" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 257}
+					}
+					257 = { set_state_name = "Tambov" }
+					set_province_name = { id = 367 name = "Tambov" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 258}
+					}
+					258 = { set_state_name = "Lipetsk" }
+					set_province_name = { id = 6398 name = "Lipetsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 259}
+					}
+					259 = { set_state_name = "Poltava" }
+					set_province_name = { id = 11504 name = "Poltava" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 260}
+					}
+					260 = { set_state_name = "Voronezh" }
+					set_province_name = { id = 413 name = "Voronezh" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 264}
+					}
+					264 = { set_state_name = "Stolbovo" }
+					set_province_name = { id = 3124 name = "Cherepovets" }
+					set_province_name = { id = 3140 name = "Stolbovo" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 265}
+					}
+					265 = { set_state_name = "Mikhaylovka" }
+					set_province_name = { id = 487 name = "Mikhaylovka" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1314}
+					}
+					1314 = { set_state_name = "North Moskva" }
+					set_province_name = { id = 14457 name = "North Moskva" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 11}
+					}
+					11 = {
+						set_state_name = "Kaunas"
+						#set_variable = { nationality = 268 }
+					}
+					set_province_name = { id = 6296 name = "Kaunas" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 13}
+					}
+					13 = { set_state_name = "Tallinn" }
+					set_province_name = { id = 3152 name = "Tallinn" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 93}
+					}
+					93 = { set_state_name = "Volyn" }
+					set_province_name = { id = 3412 name = "Kovel" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 94}
+					}
+					94 = { set_state_name = "Polesie"
+						#set_variable = { nationality = 170 }
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 95}
+					}
+					95 = { set_state_name = "Grodno" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 96}
+					}
+					96 = { set_state_name = "Vilnius" }
+					set_province_name = { id = 3320 name = "Vilnius" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 189}
+					}
+					189 = {
+						set_state_name = "Siauliai"
+						#set_variable = { nationality = 268 }
+					}
+					set_province_name = { id = 9483 name = "Siauliai" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 190}
+					}
+					190 = { 
+						set_state_name = "Kurzeme"
+						#set_variable = { nationality = 169 }
+					}
+					set_province_name = { id = 9262 name = "Liepaja" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 191}
+					}
+					191 = { set_state_name = "Tartu" }
+					set_province_name = { id = 9221 name = "Tartu" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 193}
+					}
+					193 = { set_state_name = "Chernihiv" }
+					set_province_name = { id = 3480 name = "Chernigov" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 194}
+					}
+					194 = { set_state_name = "Mozyr" }
+					set_province_name = { id = 215 name = "Mozyr" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 95}
+					}
+					197 = {
+						set_state_name = "Mykolaiv"
+						#set_variable = { nationality = 164 }
+					}
+					set_province_name = { id = 3755 name = "Mykolaiv" }
+					set_province_name = { id = 11546 name = "Vozensensk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 201}
+					}
+					201 = { set_state_name = "Zhytomyr" }
+					set_province_name = { id = 550 name = "Zhytomyr" }
+					set_province_name = { id = 11477 name = "Korosten" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 202}
+					}
+					202 = { set_state_name = "Kyiv" }
+					set_province_name = { id = 525 name = "Kyiv" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 203}
+					}
+					203 = { set_state_name = "Cherkassy" }
+					set_province_name = { id = 434 name = "Pervomaisk" }
+					set_province_name = { id = 11454 name = "Kremenchuk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 204}
+					}
+					204 = { set_state_name = "Mogilev" }
+					set_province_name = { id = 6373 name = "Mogilev" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 137}
+					}
+					137 = {
+						set_state_name = "Crimea"
+						#set_variable = { nationality = 151 }
+					}
+					set_province_name = { id = 3686 name = "Sevastopol" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 206}
+					}
+					206 = { set_state_name = "Minsk" }
+					set_province_name = { id = 6292 name = "Orsha" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 207}
+					}
+					207 = { set_state_name = "Vitebsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 241}
+					}
+					241 = { set_state_name = "Gomel" }
+					set_province_name = { id = 9288 name = "Gomel" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 773}
+					}
+					773 = { set_state_name = "Ukrainian Vinnytsia" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 198}
+					}
+					198 = { set_state_name = "Mohyliv-Podilskyi" }
+					set_province_name = { id = 6455 name = "Mohyliv-Podilskyi" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 192}
+					}
+					192 = { set_state_name = "Odessa" }
+					set_province_name = { id = 11670 name = "Odessa" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 199}
+					}
+					199 = { set_state_name = "Khmelnytskyi" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 97}
+					}
+					97 = { set_state_name = "Byelostok" }
+					set_province_name = { id = 11301 name = "Byelostok" }
+					set_province_name = { id = 6546 name = "Brest-Litovsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 943}
+					}
+					943 = { set_state_name = "Latgalia" }
+					set_province_name = { id = 310 name = "Daugavpils" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1391}
+					}
+					1391 = { set_state_name = "Lviv" }
+					set_province_name = { id = 11479 name = "Lviv" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 89}
+					}
+					89 = { set_state_name = "Stanislaviv" }
+					set_province_name = { id = 11411 name = "Stanislaviv" }
+					set_province_name = { id = 3743 name = "Kolomyja" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 73}
+					}
+					73 = { set_state_name = "Zakarpattia" }
+					set_province_name = { id = 11691 name = "Uzhhorod" }
+					set_province_name = { id = 3548 name = "Mukachevo" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 244}
+					}
+					244 = { set_state_name = "Volkhov" }
+					set_province_name = { id = 11174 name = "Volkhov" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 263}
+					}
+					263 = { set_state_name = "Novgorod" }
+					set_province_name = { id = 117 name = "Novgorod" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 406}
+					}
+					if = {
+						limit = {
+							ROOT = {
+								is_russian_nation = yes
+							}
+						}
+						406 = {
+							set_state_name = "Guryev"
+						}
+						set_province_name = { id = 464 name = "Guryev" }
+					}
+					else_if = {
+						limit = {
+							ROOT = {
+								is_kazakh_nation = yes
+							}
+						}
+						406 = {
+							set_state_name = "Atyrau"
+						}
+						set_province_name = { id = 464 name = "Atyrau" }
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 91}
+					}
+					91 = { set_state_name = "Ternopil" }
+					set_province_name = { id = 11479 name = "Ternopil" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1388}
+					}
+					1388 = { set_state_name = "Kalush" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1394}
+					}
+					1394 = { set_state_name = "Berezhany" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1393}
+					}
+					1393 = { set_state_name = "Zolochiv" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1392}
+					}
+					1392 = { set_state_name = "Kamianka Buzka" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1387}
+					}
+					1387 = { set_state_name = "Sambir" }
+				}
+			}
+			
+			#De-Russification
+			if = {
+				limit = {
+					ROOT = {
+						OR = {
+							original_tag = GER
+							original_tag = GER
+							original_tag = HUN
+							original_tag = ROM
+							original_tag = MCW
+							original_tag = UKR
+							original_tag = CAU
+							original_tag = JST
+							original_tag = RKO
+							original_tag = MST
+							original_tag = OST
+							original_tag = DST
+							original_tag = GOT
+							original_tag = PET
+							original_tag = PSK
+							original_tag = VLG
+							AND = { 
+								is_in_faction_with = GER
+								NOT = { original_tag = MOS }
+							}
+							AND = { 
+								original_tag = PRM
+								has_government = national_socialism
+							}
+							AND = {
+								original_tag = UKR
+								is_puppet = yes
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 195}
+					}
+					195 = {
+						set_state_name = "Brauchitschstadt"
+							#set_variable = { nationality = 151 }
+					}
+					set_province_name = { id = 3151 name = "Brauchitschstadt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 217}
+					}
+					217 = { set_state_name = "Paulusburg" }
+					set_province_name = { id = 3529 name = "Paulusburg" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 401}
+					}
+					401 = { set_state_name = "Kosackenstadt" }
+					set_province_name = { id = 3551 name = "Ershow" }
+					set_province_name = { id = 11523 name = "Kosackenstadt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 196}
+					}
+					196 = {
+						set_state_name = "Gotenland"
+					}
+					set_province_name = { id = 767 name = "Neu Kakhovka" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 200}
+					}
+					200 = {
+						set_state_name = "Saporoschje"
+					}
+					set_province_name = { id = 11405 name = "Saporoschje"}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 208}
+					}
+					208 = { set_state_name = "Lüka" }
+					set_province_name = { id = 9098 name = "Lüka" }
+					set_province_name = { id = 11186 name = "Kiefernwald" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 209}
+					}
+					209 = { set_state_name = "Pleskau" }
+					set_province_name = { id = 9319 name = "Lukienburg" }
+					set_province_name = { id = 11202 name = "Pleskau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 210}
+					}
+					210 = { set_state_name = "Nebel" }
+					set_province_name = { id = 9254 name = "Ostrow" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 218}
+					}
+					218 = { set_state_name = "Rostau" }
+					set_province_name = { id = 9417 name = "Rostaun" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 219}
+					}
+					219 = { set_state_name = "Moskau" }
+					set_province_name = { id = 6380 name = "Moskau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 220}
+					}
+					220 = { set_state_name = "Zitadellenfurt" }
+					set_province_name = { id = 3580 name = "Zitadellenfurt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 221}
+					}
+					221 = { set_state_name = "Charkiw" }
+					set_province_name = { id = 418 name = "Charkiw" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 222}
+					}
+					222 = { set_state_name = "Adler" }
+					set_province_name = { id = 9355 name = "Adler" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 223}
+					}
+					223 = { set_state_name = "Thulestadt" }
+					set_province_name = { id = 6262 name = "Thulestadt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 224}
+					}
+					224 = { set_state_name = "Waldemarstadt" }
+					set_province_name = { id = 3335 name = "Waldemarstadt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 226}
+					}
+					226 = {
+						set_state_name = "Katerinoslau" 
+						#set_variable = { nationality = 164 }
+					}
+					set_province_name = { id = 11437 name = "Frankfurt am Dnepr" }
+					set_province_name = { id = 11561 name = "Stahlhorn" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 227}
+					}
+					227 = { set_state_name = "Neukoblenz" }
+					set_province_name = { id = 6420 name = "Mariupol" }
+					set_province_name = { id = 6474 name = "Jusowka" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 228}
+					}
+					228 = { set_state_name = "Lübhain" }
+					set_province_name = { id = 6519 name = "Severin am Don" }
+					set_province_name = { id = 9461 name = "Lübhain" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 229}
+					}
+					229 = { set_state_name = "Aserbaidschan" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 231}
+					}
+					231 = { set_state_name = "Georgien" }
+					set_province_name = { id = 1599 name = "Tiflis" }
+					set_province_name = { id = 9626 name = "Kutnissi" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 232}
+					}
+					232 = { set_state_name = "Ostkaukasus" }
+					set_province_name = { id = 712 name = "Kisiljar" }
+					set_province_name = { id = 3672 name = "Grossneu" }
+					set_province_name = { id = 6701 name = "Machatschkala" }
+					set_province_name = { id = 7624 name = "Derbent" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 233}
+					}
+					233 = { set_state_name = "Kaukasusgebirge" }
+					set_province_name = { id = 9628 name = "Wladikawkas" }
+					set_province_name = { id = 9649 name = "Naltschik" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 234}
+					}
+					234 = { set_state_name = "Katharinastadt" }
+					set_province_name = { id = 3720 name = "Maikop" }
+					set_province_name = { id = 3734 name = "Katharinastadt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 235}
+					}
+					235 = { set_state_name = "Strawopol" }
+					set_province_name = { id = 748 name = "Strawopol" }
+					set_province_name = { id = 11678 name = "Pijatigor" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 236}
+					}
+					236 = { set_state_name = "Wolgastadt" }
+					set_province_name = { id = 9753 name = "Wolgastadt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 237}
+					}
+					237 = { set_state_name = "Etil" }
+					set_province_name = { id = 11566 name = "Etil" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 238}
+					}
+					238 = { set_state_name = "Wolgodonsk" }
+					set_province_name = { id = 6490 name = "Wolgodonsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 239}
+					}
+					239 = { set_state_name = "Saartau" }
+					set_province_name = { id = 433 name = "Balashov" }
+					set_province_name = { id = 3578 name = "Saartau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 242}
+					}
+					242 = { set_state_name = "Smolenau" }
+					set_province_name = { id = 306 name = "Smolenau" }
+					set_province_name = { id = 11254 name = "Wiasma" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 243}
+					}
+					243 = { set_state_name = "Roslawel" }
+					set_province_name = { id = 3210 name = "Prigorskön" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 245}
+					}
+					245 = { set_state_name = "Müllerowau" }
+					set_province_name = { id = 3519 name = "Müllerowau" }
+					set_province_name = { id = 6544 name = "Morosowsk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 246}
+					}
+					246 = { set_state_name = "Rosau" }
+					set_province_name = { id = 11224 name = "Ostaschkow" }
+					set_province_name = { id = 11349 name = "Rosau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 247}
+					}
+					247 = { set_state_name = "Königstein" }
+					set_province_name = { id = 6245 name = "Königstein" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 248}
+					}
+					248 = { set_state_name = "Jarschlau" }
+					set_province_name = { id = 121 name = "Jarschlau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 253}
+					}
+					253 = { set_state_name = "Ivanau" }
+					set_province_name = { id = 378 name = "Waldemar" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 254}
+					}
+					254 = { set_state_name = "Rijasan" }
+					set_province_name = { id = 11248 name = "Rijasan" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 255}
+					}
+					255 = { set_state_name = "Penza" }
+					set_province_name = { id = 9409 name = "Penza" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 257}
+					}
+					257 = { set_state_name = "Tambow" }
+					set_province_name = { id = 367 name = "Tambow" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 258}
+					}
+					258 = { set_state_name = "Libach" }
+					set_province_name = { id = 6398 name = "Libach" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 259}
+					}
+					259 = { set_state_name = "Poltawa" }
+					set_province_name = { id = 11504 name = "Poltawa" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 260}
+					}
+					260 = { set_state_name = "Rabenblatt" }
+					set_province_name = { id = 413 name = "Rabenblatt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 264}
+					}
+					264 = { set_state_name = "Straßenmarkt" }
+					set_province_name = { id = 3124 name = "Tscherepow" }
+					set_province_name = { id = 3140 name = "Straßenmarkt" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 265}
+					}
+					265 = { set_state_name = "Michailaue" }
+					set_province_name = { id = 487 name = "Michailaue" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 1314}
+					}
+					1314 = { set_state_name = "North Moscow" }
+					set_province_name = { id = 14457 name = "North Moscow" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 11}
+					}
+					11 = {
+						set_state_name = "Kauen"
+						#set_variable = { nationality = 268 }
+					}
+					set_province_name = { id = 6296 name = "Kauen" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 13}
+					}
+					13 = { set_state_name = "Harrien" }
+					set_province_name = { id = 3152 name = "Reval" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 93}
+					}
+					93 = { set_state_name = "Wolyn" }
+					set_province_name = { id = 3412 name = "Kowel" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 94}
+					}
+					94 = { set_state_name = "Polesien"
+						#set_variable = { nationality = 170 }
+					}
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 95}
+					}
+					95 = { set_state_name = "Neugraudenz" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 96}
+					}
+					96 = { set_state_name = "Wilna" }
+					set_province_name = { id = 3320 name = "Wilna" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 189}
+					}
+					189 = {
+						set_state_name = "Schaulen"
+						#set_variable = { nationality = 268 }
+					}
+					set_province_name = { id = 9483 name = "Schaulen" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 190}
+					}
+					190 = { 
+						set_state_name = "Kurland"
+						#set_variable = { nationality = 169 }
+					}
+					set_province_name = { id = 9262 name = "Libau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 191}
+					}
+					191 = { set_state_name = "Dorpat" }
+					set_province_name = { id = 9221 name = "Dorpat" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 193}
+					}
+					193 = { set_state_name = "Tschernigow" }
+					set_province_name = { id = 3480 name = "Tschernigow" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 194}
+					}
+					194 = { set_state_name = "Mosyr" }
+					set_province_name = { id = 215 name = "Mosyr" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 197}
+					}
+					197 = {
+						set_state_name = "Mikolajiw"
+						#set_variable = { nationality = 164 }
+					}
+					set_province_name = { id = 3755 name = "Mikolajiw" }
+					set_province_name = { id = 11546 name = "Perwomaisk" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 201}
+					}
+					201 = { set_state_name = "Schütomir" }
+					set_province_name = { id = 550 name = "Schütomir" }
+					set_province_name = { id = 11477 name = "Genau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 202}
+					}
+					202 = { set_state_name = "Kiew" }
+					set_province_name = { id = 525 name = "Kiew" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 203}
+					}
+					203 = { set_state_name = "Tscherkessien" }
+					set_province_name = { id = 434 name = "Perwomaisk" }
+					set_province_name = { id = 11454 name = "Krementschug" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 204}
+					}
+					204 = { set_state_name = "Mogilau" }
+					set_province_name = { id = 6373 name = "Mogilau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 137}
+					}
+					137 = {
+						set_state_name = "Gotenhalbinsel"
+						#set_variable = { nationality = 151 }
+					}
+					set_province_name = { id = 3686 name = "Theoderichshafen" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 206}
+					}
+					206 = { set_state_name = "Mindenland" }
+					set_province_name = { id = 6292 name = "Orscha" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 207}
+					}
+					207 = { set_state_name = "Weißenbau" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 241}
+					}
+					241 = { set_state_name = "Homiel" }
+					set_province_name = { id = 9288 name = "Homiel" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 773}
+					}
+					773 = { set_state_name = "Ukrainisch-Winnitzien" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 198}
+					}
+					198 = { set_state_name = "Nistrenia" }
+					set_province_name = { id = 6455 name = "Vinița" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 192}
+					}
+					192 = { set_state_name = "Odesă" }
+					set_province_name = { id = 11670 name = "Odesă" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 199}
+					}
+					199 = { set_state_name = "Chelmitz" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 97}
+					}
+					97 = { set_state_name = "Neuostpreußen" }
+					set_province_name = { id = 11301 name = "Weißberg" }
+					set_province_name = { id = 6546 name = "Litauisch-Brest" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 943}
+					}
+					943 = { set_state_name = "Lettgallen" }
+					set_province_name = { id = 310 name = "Dünaburg" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 91}
+					}
+					91 = { set_state_name = "Lemberg Province" }
+					set_province_name = { id = 11479 name = "Lemberg" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 89}
+					}
+					89 = { set_state_name = "Stanislau" }
+					set_province_name = { id = 11411 name = "Stanislau" }
+					set_province_name = { id = 3743 name = "Kolomea" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 73}
+					}
+					73 = { set_state_name = "Carpathian Ruthenia" }
+					set_province_name = { id = 11691 name = "Ungvár" }
+					set_province_name = { id = 3548 name = "Munkács" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 244}
+					}
+					244 = { set_state_name = "Volkhof" }
+					set_province_name = { id = 11174 name = "Volkhof" }
+				}
+				if = {
+					limit = {
+						FROM.FROM = {state = 263}
+					}
+					263 = { set_state_name = "Holmgard" }
+					set_province_name = { id = 117 name = "Holmgard" }
+				}
+			}
+		}	
+	}
+}
