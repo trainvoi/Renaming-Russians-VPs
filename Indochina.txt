@@ -18,7 +18,7 @@ focus_tree = {
 	focus = {
 		id = INC_Revolutionary_Provisional_Government
 		icon = GFX_goal_red_star_green_wreath
-		cost = 1
+		cost = 1.00
 		x = 4
 		y = 0
 		ai_will_do = {
@@ -32,7 +32,7 @@ focus_tree = {
 	focus = {
 		id = INC_Break_the_Chain
 		icon = GFX_goal_revolution
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Revolutionary_Provisional_Government
 		}
@@ -76,7 +76,7 @@ focus_tree = {
 	focus = {
 		id = INC_Incorporate_Administration
 		icon = GFX_goal_civil_service
-		cost = 8
+		cost = 8.00
 		prerequisite = {
 			focus = INC_Revolutionary_Provisional_Government
 		}
@@ -120,7 +120,7 @@ focus_tree = {
 	focus = {
 		id = INC_Anti_Infiltration_Campaign
 		icon = GFX_goal_step_on_skull
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Incorporate_Administration
 			focus = INC_Break_the_Chain
@@ -139,7 +139,7 @@ focus_tree = {
 	focus = {
 		id = INC_Extensive_Mobilization
 		icon = GFX_focus_YUG_pan_slavic_congress
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Anti_Infiltration_Campaign
 		}
@@ -207,7 +207,7 @@ focus_tree = {
 	focus = {
 		id = INC_Land_Reform
 		icon = GFX_goal_agrarian_reform
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_Revolutionary_Provisional_Government
 		}
@@ -253,7 +253,7 @@ focus_tree = {
 	focus = {
 		id = INC_War_Economy
 		icon = GFX_goal_production
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_Land_Reform
 		}
@@ -298,7 +298,7 @@ focus_tree = {
 	focus = {
 		id = INC_Education_Reform
 		icon = GFX_focus_generic_military_academy
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Revolutionary_Provisional_Government
 		}
@@ -363,7 +363,7 @@ focus_tree = {
 	focus = {
 		id = INC_Journey_to_the_West
 		icon = GFX_focus_generic_socialist_science
-		cost = 8
+		cost = 8.00
 		prerequisite = {
 			focus = INC_Literacy_Campaign
 		}
@@ -388,7 +388,7 @@ focus_tree = {
 	focus = {
 		id = INC_National_Assembly
 		icon = GFX_goal_red_star_gold_wreath
-		cost = 8
+		cost = 8.00
 		prerequisite = {
 			focus = INC_War_Economy
 		}
@@ -452,7 +452,7 @@ focus_tree = {
 	focus = {
 		id = INC_Anarchist_Revolution
 		icon = GFX_goal_ideology_radical_socialist
-		cost = 1
+		cost = 1.00
 		prerequisite = {
 			focus = INC_National_Assembly
 		}
@@ -525,7 +525,7 @@ focus_tree = {
 					add_political_power = 50
 				}
 			}
-			set_country_flag = INC_research_slot_2
+			#set_country_flag = INC_research_slot_2
 			add_ideas = INC_rev_spontaneity_idea
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
@@ -540,9 +540,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Revolutionary_Spontaneity
 		}
-		mutually_exclusive = {
-			focus = INC_Modernist_Culture
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Modernist_Culture
+		#}
 		available = {
 			has_government = radical_socialist
 		}
@@ -590,9 +590,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Revolutionary_Spontaneity
 		}
-		mutually_exclusive = {
-			focus = INC_Freedom_of_thought
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Freedom_of_thought
+		#}
 		available = {
 			num_of_factories > 15
 			has_government = radical_socialist
@@ -667,7 +667,7 @@ focus_tree = {
 	focus = {
 		id = INC_Syndicalist_Revolution
 		icon = GFX_goal_ideology_syndicalist
-		cost = 1
+		cost = 1.00
 		prerequisite = {
 			focus = INC_National_Assembly
 		}
@@ -791,7 +791,7 @@ focus_tree = {
 					add_political_power = 50
 				}
 			}
-			set_country_flag = INC_research_slot_2
+			#set_country_flag = INC_research_slot_2
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
 		ai_will_do = {
@@ -831,7 +831,7 @@ focus_tree = {
 	focus = {
 		id = INC_Vanguardist_Revolution
 		icon = GFX_goal_ideology_totalist
-		cost = 1
+		cost = 1.00
 		prerequisite = {
 			focus = INC_National_Assembly
 		}
@@ -862,9 +862,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Vanguardist_Revolution
 		}
-		mutually_exclusive = {
-			focus = INC_Parallel_Administration
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Parallel_Administration
+		#}
 		available = {
 			has_government = totalist
 		}
@@ -910,7 +910,7 @@ focus_tree = {
 				}
 			}
 			add_ideas = INC_Peoples_Soviet_idea_1
-			set_country_flag = INC_research_slot_2
+			#set_country_flag = INC_research_slot_2
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
 		ai_will_do = {
@@ -951,9 +951,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Vanguardist_Revolution
 		}
-		mutually_exclusive = {
-			focus = INC_Urbanization_Effort
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Urbanization_Effort
+		#}
 		available = {
 			has_government = totalist
 		}
@@ -978,9 +978,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Le_Militant
 		}
-		mutually_exclusive = {
-			focus = INC_La_Lutte
-		}
+		#mutually_exclusive = {
+		#	focus = INC_La_Lutte
+		#}
 		x = 0
 		y = 1
 		relative_position_id = INC_Le_Militant
@@ -1020,10 +1020,10 @@ focus_tree = {
 			focus = INC_Le_Militant
 			focus = INC_Modernist_Culture
 		}
-		mutually_exclusive = {
-			focus = INC_Empower_the_CGT
-			focus = INC_Democratic_Centralism
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Empower_the_CGT
+		#	focus = INC_Democratic_Centralism
+		#}
 		x = 2
 		y = 1
 		relative_position_id = INC_Le_Militant
@@ -1050,9 +1050,9 @@ focus_tree = {
 			focus = INC_Police_State
 			focus = INC_Worker's_Council
 		}
-		mutually_exclusive = {
-			focus = INC_La_Lutte
-		}
+		#mutually_exclusive = {
+		#	focus = INC_La_Lutte
+		#}
 		available = {
 			has_government = totalist
 		}
@@ -1133,7 +1133,7 @@ focus_tree = {
 	focus = {
 		id = INC_Nationalist_Revolution
 		icon = GFX_goal_ideology_paternal_autocrat
-		cost = 1
+		cost = 1.00
 		prerequisite = {
 			focus = INC_National_Assembly
 		}
@@ -1154,7 +1154,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INC_Nationalist_Revolution"
-			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	focus = {
@@ -1164,9 +1163,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Nationalist_Revolution
 		}
-		mutually_exclusive = {
-			focus = INC_Caravelle_Manifesto
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Caravelle_Manifesto
+		#}
 		available = {
 			has_socialist_government = no
 		}
@@ -1204,9 +1203,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Nationalist_Revolution
 		}
-		mutually_exclusive = {
-			focus = INC_Political_Tutelage
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Political_Tutelage
+		#}
 		available = {
 			has_socialist_government = no
 		}
@@ -1238,10 +1237,10 @@ focus_tree = {
 			focus = INC_Caravelle_Manifesto
 			focus = INC_Political_Tutelage
 		}
-		mutually_exclusive = {
-			focus = INC_Heavy_Industry_Cult
-			focus = INC_Encourage_Entrepreneurship
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Heavy_Industry_Cult
+		#	focus = INC_Encourage_Entrepreneurship
+		#}
 		available = {
 			has_socialist_government = no
 		}
@@ -1266,7 +1265,7 @@ focus_tree = {
 					add_extra_state_shared_building_slots = 1
 				}
 			}
-			set_country_flag = INC_research_slot_2
+			#set_country_flag = INC_research_slot_2
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 	}
@@ -1277,9 +1276,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Caravelle_Manifesto
 		}
-		mutually_exclusive = {
-			focus = INC_State_Corporatism
-		}
+		#mutually_exclusive = {
+		#	focus = INC_State_Corporatism
+		#}
 		available = {
 			has_socialist_government = no
 		}
@@ -1298,7 +1297,7 @@ focus_tree = {
 				else = {
 					add_political_power = 50
 				}
-				set_country_flag = INC_research_slot_2
+				#set_country_flag = INC_research_slot_2
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
@@ -1311,9 +1310,9 @@ focus_tree = {
 			focus = INC_State_Corporatism
 			focus = INC_Encourage_Entrepreneurship
 		}
-		mutually_exclusive = {
-			focus = INC_Militarist_Ethos
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Militarist_Ethos
+		#}
 		x = 1
 		y = 1
 		relative_position_id = INC_State_Corporatism
@@ -1338,9 +1337,9 @@ focus_tree = {
 		available = {
 			has_socialist_government = no
 		}
-		mutually_exclusive = {
-			focus = INC_Vietnamization
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Vietnamization
+		#}
 		x = 0
 		y = 1
 		relative_position_id = INC_Greater_Harmony
@@ -1363,9 +1362,9 @@ focus_tree = {
 			focus = INC_Parallel_Administration
 			focus = INC_Political_Tutelage
 		}
-		mutually_exclusive = {
-			focus = INC_State_Corporatism
-		}
+		#mutually_exclusive = {
+		#	focus = INC_State_Corporatism
+		#}
 		x = -1
 		y = 1
 		relative_position_id = INC_Political_Tutelage
@@ -1378,7 +1377,7 @@ focus_tree = {
 					add_political_power = 50
 				}
 			}
-			set_country_flag = INC_research_slot_2
+			#set_country_flag = INC_research_slot_2
 			286 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -1402,9 +1401,9 @@ focus_tree = {
 			focus = INC_Heavy_Industry_Cult
 			focus = INC_State_Corporatism
 		}
-		mutually_exclusive = {
-			focus = INC_Greater_Harmony
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Greater_Harmony
+		#}
 		x = 1
 		y = 1
 		relative_position_id = INC_Heavy_Industry_Cult
@@ -1431,9 +1430,9 @@ focus_tree = {
 			focus = INC_Militarist_Ethos
 			focus = INC_Greater_Harmony
 		}
-		mutually_exclusive = {
-			focus = INC_Embrace_Indochina
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Embrace_Indochina
+		#}
 		available = {
 			has_socialist_government = no
 		}
@@ -1467,9 +1466,9 @@ focus_tree = {
 		id = INC_General_Van_Tien_Dung's_Reform
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		cost = 6.00
-		mutually_exclusive = {
-			focus = INC_General_Nguyen_Chi_Thanh's_Reform
-		}
+		#mutually_exclusive = {
+		#	focus = INC_General_Nguyen_Chi_Thanh's_Reform
+		#}
 		available = {
 			has_country_flag = INC_Army_Reform_Plan
 			is_subject = no
@@ -1496,7 +1495,7 @@ focus_tree = {
 	focus = {
 		id = INC_Infiltration_Tactics
 		icon = GFX_focus_prc_infiltration
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_General_Van_Tien_Dung's_Reform
 		}
@@ -1546,7 +1545,7 @@ focus_tree = {
 	focus = {
 		id = INC_Concerntrated_Offensive
 		icon = GFX_goal_army_guy_2
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_Infiltration_Tactics
 		}
@@ -1582,9 +1581,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Concerntrated_Offensive
 		}
-		mutually_exclusive = {
-			focus = INC_Commando_Assault
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Commando_Assault
+		#}
 		x = -2
 		y = 1
 		relative_position_id = INC_Concerntrated_Offensive
@@ -1609,14 +1608,14 @@ focus_tree = {
 	}
 	focus = {
 		id = INC_General_Nguyen_Chi_Thanh's_Reform
-		icon = GFX_goal_generic_army_mass_assault
-		cost = 6
-		mutually_exclusive = {
-			focus = INC_General_Van_Tien_Dung's_Reform
-		}
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 6.00
+		#mutually_exclusive = {
+		#	focus = INC_General_Van_Tien_Dung's_Reform
+		#}
 		available = {
 			has_country_flag = INC_Army_Reform_Plan
-			NOT = { has_country_flag = Nguyen_Chi_Thanh_dead }
+			NOT = {has_country_flag = Nguyen_Chi_Thanh_dead}
 		}
 		x = 23
 		y = 0
@@ -1643,9 +1642,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Concerntrated_Offensive
 		}
-		mutually_exclusive = {
-			focus = INC_Motorized_Assault
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Motorized_Assault
+		#}
 		x = 0
 		y = 1
 		relative_position_id = INC_Concerntrated_Offensive
@@ -1956,7 +1955,7 @@ focus_tree = {
 	focus = {
 		id = INC_Guerilla_Tactics
 		icon = GFX_SIA_jungletraining
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_General_Nguyen_Chi_Thanh's_Reform
 		}
@@ -1988,9 +1987,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Guerilla_Tactics
 		}
-		mutually_exclusive = {
-			focus = INC_Harassment_Focus
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Harassment_Focus
+		#}
 		x = -1
 		y = 1
 		relative_position_id = INC_Guerilla_Tactics
@@ -2024,9 +2023,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Guerilla_Tactics
 		}
-		mutually_exclusive = {
-			focus = INC_Ambush_Focus
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Ambush_Focus
+		#}
 		x = 1
 		y = 1
 		relative_position_id = INC_Guerilla_Tactics
@@ -2141,7 +2140,7 @@ focus_tree = {
 	focus = {
 		id = INC_Unification
 		icon = GFX_HND_indochina_revolution
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_National_Assembly
 		}
@@ -2210,9 +2209,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Industrial_Effort
 		}
-		mutually_exclusive = {
-			focus = INC_International_Devision_of_Labor
-		}
+		#mutually_exclusive = {
+		#	focus = INC_International_Devision_of_Labor
+		#}
 		x = -2
 		y = 1
 		relative_position_id = INC_Industrial_Effort
@@ -2237,9 +2236,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Industrial_Effort
 		}
-		mutually_exclusive = {
-			focus = INC_Self_Reliance
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Self_Reliance
+		#}
 		available = {
 			has_socialist_government = yes
 		}
@@ -2328,10 +2327,18 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus INC_Hydraulic_Ambition"
 			add_resource = {
 				type = aluminium
-				amount = 9
+				amount = 32
 				state = 671
 			}
 			671 = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_resource = {
+				type = aluminium
+				amount = 16
+				state = 827
+			}
+			827 = {
 				add_extra_state_shared_building_slots = 1
 			}
 		}
@@ -2394,7 +2401,7 @@ focus_tree = {
 			add_state_core = 826
 			add_resource = {
 				type = rubber
-				amount = 12
+				amount = 26
 				state = 750
 			}
 			750 = {
@@ -2487,20 +2494,36 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus INC_Rice_and_Rubber"
 			add_resource = {
 				type = rubber
-				amount = 19
+				amount = 18
 				state = 856
 			}
 			add_resource = {
 				type = rubber
-				amount = 8
+				amount = 26
 				state = 286
 			}
 			add_resource = {
 				type = rubber
-				amount = 12
+				amount = 30
 				state = 827
 			}
 			856 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			827 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			286 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
@@ -2565,7 +2588,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus INC_Coal_and_Steel"
 			add_resource = {
 				type = steel
-				amount = 14
+				amount = 34
 				state = 671
 			}
 			671 = {
@@ -2786,9 +2809,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Cam_Ranh_Bay_Expansion
 		}
-		mutually_exclusive = {
-			focus = INC_Screen_Ships_Research
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Screen_Ships_Research
+		#}
 		x = -1
 		y = 1
 		relative_position_id = INC_Cam_Ranh_Bay_Expansion
@@ -2813,9 +2836,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Cam_Ranh_Bay_Expansion
 		}
-		mutually_exclusive = {
-			focus = INC_Submarine_Research
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Submarine_Research
+		#}
 		x = 1
 		y = 1
 		relative_position_id = INC_Cam_Ranh_Bay_Expansion
@@ -3208,7 +3231,7 @@ focus_tree = {
 	focus = {
 		id = INC_An_International_Revolutionary_Outpost
 		icon = GFX_INC_Indochina_Internationale_Outpost
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Unification
 		}
@@ -3265,7 +3288,7 @@ focus_tree = {
 	focus = {
 		id = INC_Rising_Dragon
 		icon = GFX_INC_Rising_Dragon
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Unification
 		}
@@ -3291,7 +3314,7 @@ focus_tree = {
 	focus = {
 		id = INC_Beyond_Indochina
 		icon = GFX_goal_generic_globe
-		cost = 3
+		cost = 3.00
 
 		prerequisite = {
 			focus = INC_An_International_Revolutionary_Outpost
@@ -3384,7 +3407,7 @@ focus_tree = {
 	focus = {
 		id = INC_Strengthen_Our_Tie_with_Calcutta
 		icon = GFX_goal_india_commune
-		cost = 5
+		cost = 5.00
 		available = {
 			country_exists = HND
 			is_subject = no
@@ -3420,7 +3443,7 @@ focus_tree = {
 	focus = {
 		id = INC_Seek_Support_From_Japan
 		icon = GFX_goal_japan
-		cost = 5
+		cost = 5.00
 		available = {
 			country_exists = JAP
 			NOT = {
@@ -3432,9 +3455,9 @@ focus_tree = {
 		prerequisite = {
 			focus = INC_Beyond_Indochina
 		}
-		mutually_exclusive = {
-			focus = INC_Commit_to_Chinese_Revolution
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Commit_to_Chinese_Revolution
+		#}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INC_Seek_Support_From_Japan"
 			JAP = { country_event = viet.165 }
@@ -3446,7 +3469,7 @@ focus_tree = {
 	focus = {
 		id = INC_Join_Co_Prosperous_Sphere
 		icon = GFX_focus_chi_collaboration_with_the_japanese
-		cost = 5
+		cost = 5.00
 		available = {
 			country_exists = JAP
 			threat > 0.5
@@ -3478,7 +3501,7 @@ focus_tree = {
 	focus = {
 		id = INC_Commit_to_Chinese_Revolution
 		icon = GFX_focus_chi_cooperation_with_the_nationalists
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_Beyond_Indochina
 		}
@@ -3504,22 +3527,21 @@ focus_tree = {
 				CHI = { is_ai = no }
 			}
 		}
-		mutually_exclusive = {
-			focus = INC_Seek_Support_From_Japan
-		}
+		#mutually_exclusive = {
+		#	focus = INC_Seek_Support_From_Japan
+		#}
 		x = 1
 		y = 1
 		relative_position_id = INC_Beyond_Indochina
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INC_Commit_to_Chinese_Revolution"
-			set_country_flag = CHI_support_INC
 			CHI = { country_event = viet.168 }
 		}
 	}
 	focus = {
 		id = INC_Mission_of_General_Nguyen_Son
 		icon = GFX_focus_generic_military_mission
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_Commit_to_Chinese_Revolution
 		}
@@ -3545,7 +3567,7 @@ focus_tree = {
 	focus = {
 		id = INC_Comrade_Plus_Brother
 		icon = GFX_goal_china_deal
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_Mission_of_General_Nguyen_Son
 		}
@@ -3597,7 +3619,7 @@ focus_tree = {
 	focus = {
 		id = INC_Peninsular_Direction
 		icon = GFX_INC_Indochina_Crosshair
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Rising_Dragon
 			focus = INC_An_International_Revolutionary_Outpost
@@ -3620,7 +3642,7 @@ focus_tree = {
 	focus = {
 		id = INC_Cooperate_with_Siam
 		icon = GFX_goal_flag_siam
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Peninsular_Direction
 		}
@@ -3647,7 +3669,7 @@ focus_tree = {
 	focus = {
 		id = INC_Cooperate_with_Burma
 		icon = GFX_goal_burma
-		cost = 3
+		cost = 3.00
 		prerequisite = {
 			focus = INC_Peninsular_Direction
 		}
@@ -3804,7 +3826,7 @@ focus_tree = {
 	focus = {
 		id = INC_Destabilize_Siam
 		icon = GFX_SIA_Crown_Abolishment
-		cost = 5
+		cost = 5.00
 		available = {
 			country_exists = SIA
 			SIA = {
@@ -3866,7 +3888,7 @@ focus_tree = {
 	focus = {
 		id = INC_Challenge_Siamese_Hegemony
 		icon = YUN_GFX_Goal_The_Siamese_Threat
-		cost = 5
+		cost = 5.00
 		available = {
 			country_exists = SIA
 			is_subject = no
@@ -3976,7 +3998,7 @@ focus_tree = {
 	focus = {
 		id = INC_Ask_For_Membership
 		icon = GFX_focus_HOL_deal_with_left
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_Special_Relationship_With_France
 		}
@@ -4001,7 +4023,7 @@ focus_tree = {
 	focus = {
 		id = INC_Join_East_Syndicalist_Faction
 		icon = GFX_goal_red_star_dove
-		cost = 5
+		cost = 5.00
 		prerequisite = {
 			focus = INC_Strengthen_Our_Tie_with_Calcutta
 		}
